@@ -1,28 +1,29 @@
 <resources>
     <string name="app_name">AnyNote</string>
     <!--label-->
-    <string name="labelText_title">内容标题</string>
-    <string name="labelText_author">作者</string>
     <string name="labelText_keys">关键词</string>
     <string name="labelText_type">分类</string>
     <string name="labelText_remark">备注</string>
     <string name="labelText_content">正文</string>
+    <string name="labelText_time">添加时间</string>
     <!--    button-->
-    <string name="btnText_collect">收录列表</string>
+    <string name="btnText_collect">内容列表</string>
     <string name="btnText_add">新增收录</string>
     <string name="btnText_setting">软件设置</string>
     <string name="btnText_about">关于软件</string>
     <string name="btnText_exit">退出应用</string>
 
-    <string name="btnText_ok"></string>
+    <string name="btnText_ok">确定</string>
+    <string name="btnText_del">删除</string>
     <string name="btnText_cancel">取消</string>
     <string name="btnText_edit">编辑修改</string>
     <string name="btnText_search">搜索</string>
     <!--    softVersion-->
-    <string name="soft_author">shadow</string>
-    <string name="soft_version">0.1.0</string>
-    <string name="soft_time">2019-12</string>
-
-
-    <dimen name="btnMargin">10dp</dimen>
+    <string name="about_me_context">软件版本:V1.0.0\n作者:shadow\n版本时间:2020-02</string>
+    <!--搜索-->
+    <string name="search_string">正文/关键字/分类检索</string>
+    <string name="search_context_text">搜索正文内容</string>
+    <string name="search_key_text">关键字</string>
+    <string name="search_type_text">分类</string>
+    <string name="title_activity_note_view">NoteViewActivity</string>
 </resources>
