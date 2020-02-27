@@ -69,7 +69,8 @@ public class AddNoteActivity extends AppCompatActivity {
                 }
 
                 NoteModel model = new NoteModel();
-                model.setId(noteId);
+                if (noteId > 0)
+                    model.setId(noteId);
                 model.setContext(contextText.getText().toString());
                 model.setKey(keyText.getText().toString());
                 model.setType(typeText.getText().toString());

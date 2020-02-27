@@ -39,12 +39,21 @@ public class CollectNoteActivity extends AppCompatActivity {
     private void init() {
         pageIndex = 1;
         pageSize = 20;
-        searchText = findViewById(R.id.editText7);
+        searchText = findViewById(R.id.editText2);
         searchBtn = findViewById(R.id.button8);
-        listData = service.QueryList(new NoteQueryParameter());
+        final NoteQueryParameter param = new NoteQueryParameter();
+        param.setPageIndex(pageIndex);
+        param.setPageSize(pageSize);
+        listData = service.QueryList(param);
         notelist = findViewById(R.id.noteList);
         final NoteItemAdapter noteItemAdapter = new NoteItemAdapter(CollectNoteActivity.this, R.layout.note_collect_item, listData);
         View headerView = getLayoutInflater().inflate(R.layout.note_collect_title, null);
+        headerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         notelist.addHeaderView(headerView);
         notelist.setAdapter(noteItemAdapter);
 
@@ -61,8 +70,11 @@ public class CollectNoteActivity extends AppCompatActivity {
                         params.setContextSearch(search_text);
                         params.setContextSearch(search_text);
                         params.setTypeSearch(search_text);
+
                     }
                 }
+                params.setPageIndex(pageIndex);
+                params.setPageSize(pageSize);
                 listData = service.QueryList(params);
                 noteItemAdapter.clear();
                 noteItemAdapter.addAll(listData);
@@ -79,10 +91,12 @@ public class CollectNoteActivity extends AppCompatActivity {
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 
                 if (notelist.getCount() != 0 && notelist.getLastVisiblePosition() >= (notelist.getCount() - 1)) {
-                    for (int j = 0; j < 3; j++) {
-                        System.out.println(j);
+                    long count = service.QueryCount(param);
+                    if (count > notelist.getCount() * param.getPageIndex()) {
+                        param.setPageIndex(pageIndex + 1);
+                        List<NoteModel> pageData = service.QueryList(param);
+                        noteItemAdapter.addAll(pageData);
                     }
-                    noteItemAdapter.notifyDataSetChanged();
                 }
             }
         });
@@ -93,7 +107,8 @@ public class CollectNoteActivity extends AppCompatActivity {
                 NoteModel model = (NoteModel) parent.getItemAtPosition(position);
                 Intent noteDetail = new Intent(CollectNoteActivity.this, NoteViewActivity.class);
                 noteDetail.putExtra("noteId", model.getId());
-                finish();
+                startActivity(noteDetail);
+//                finish();
             }
         });
 

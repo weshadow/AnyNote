@@ -41,7 +41,7 @@ public class NoteViewActivity extends AppCompatActivity {
         contextText = findViewById(R.id.textView12);
         remarkText = findViewById(R.id.textView13);
 
-        noteId = getIntent().getIntExtra("noteId", 0);
+        noteId = getIntent().getLongExtra("noteId", 0);
 
         NoteModel model = service.GetById(noteId);
 
@@ -56,7 +56,7 @@ public class NoteViewActivity extends AppCompatActivity {
                 Intent editview = new Intent(NoteViewActivity.this, AddNoteActivity.class);
                 editview.putExtra("noteId", noteId);
                 startActivity(editview);
-                finish();
+//                finish();
             }
         });
 

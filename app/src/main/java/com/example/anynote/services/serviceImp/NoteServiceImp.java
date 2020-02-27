@@ -14,7 +14,7 @@ public class NoteServiceImp implements INoteService {
         model.setTime(new Date().getTime());
 
         if (model.getId() != null && model.getId() > 0) {
-            long result_id = NoteModel.update(model);
+            long result_id = model.save();
             if (result_id > 0)
                 return model;
         } else {
@@ -40,7 +40,7 @@ public class NoteServiceImp implements INoteService {
         NoteModel model = GetById(Id);
         if (model == null)
             return false;
-        if (NoteModel.delete(model))
+        if (model.delete())
             return true;
         return false;
     }
