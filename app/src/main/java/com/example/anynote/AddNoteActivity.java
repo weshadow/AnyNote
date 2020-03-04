@@ -17,8 +17,7 @@ import com.example.anynote.services.serviceImp.NoteServiceImp;
 
 public class AddNoteActivity extends AppCompatActivity {
 
-    private Button okBtn, cancelBtn;
-    private EditText contextText, keyText, typeText, remarkText;
+    private EditText titleText, authorText, yearText, typeText, contentText, remarkText;
     private long noteId;
 
     private INoteService service;
@@ -38,28 +37,38 @@ public class AddNoteActivity extends AppCompatActivity {
         service = new NoteServiceImp();
 
 
-        keyText = findViewById(R.id.editText3);
+        titleText = findViewById(R.id.editText3);
+        authorText = findViewById(R.id.editText6);
+        yearText = findViewById(R.id.editText7);
         typeText = findViewById(R.id.editText4);
+        contentText = findViewById(R.id.editText);
         remarkText = findViewById(R.id.editText5);
-        contextText = findViewById(R.id.editText);
 
         noteId = getIntent().getLongExtra("noteId", 0);
         if (noteId > 0) {
             NoteModel model = service.GetById(noteId);
-            keyText.setText(model.getKey());
+            titleText.setText(model.getTitle());
+            authorText.setText(model.getAuthor());
+            yearText.setText(model.getYear());
             typeText.setText(model.getType());
             remarkText.setText(model.getRemark());
-            contextText.setText(model.getContext());
+            contentText.setText(model.getContent());
         }
 
-        okBtn = findViewById(R.id.button6);
-        cancelBtn = findViewById(R.id.button7);
+        Button okBtn = findViewById(R.id.button6);
+        Button cancelBtn = findViewById(R.id.button7);
 
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String errMessage = "";
-                if (contextText.getText().toString().isEmpty())
+                if (titleText.getText().toString().isEmpty())
+                    errMessage = "请输入标题";
+                else if (authorText.getText().toString().isEmpty())
+                    errMessage = "请输入作者";
+                else if (typeText.getText().toString().isEmpty())
+                    errMessage = "请输入类型";
+                else if (contentText.getText().toString().isEmpty())
                     errMessage = "请输入正文内容";
                 if (!errMessage.isEmpty()) {
                     Toast toast = Toast.makeText(AddNoteActivity.this, errMessage, Toast.LENGTH_SHORT);
@@ -71,20 +80,21 @@ public class AddNoteActivity extends AppCompatActivity {
                 NoteModel model = new NoteModel();
                 if (noteId > 0)
                     model.setId(noteId);
-                model.setContext(contextText.getText().toString());
-                model.setKey(keyText.getText().toString());
+                model.setContent(contentText.getText().toString());
+                model.setTitle(titleText.getText().toString());
+                model.setAuthor(authorText.getText().toString());
+                model.setYear(yearText.getText().toString());
                 model.setType(typeText.getText().toString());
                 model.setRemark(remarkText.getText().toString());
                 if (service.Edit(model) == null) {
                     Toast toast = Toast.makeText(AddNoteActivity.this, "操作失败", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
-                    return;
                 } else {
                     Toast toast = Toast.makeText(AddNoteActivity.this, "操作成功", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
-                    return;
+                    finish();
                 }
             }
         });
@@ -99,7 +109,7 @@ public class AddNoteActivity extends AppCompatActivity {
                 dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        System.exit(0);
+                        finish();
                     }
                 });
                 dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {

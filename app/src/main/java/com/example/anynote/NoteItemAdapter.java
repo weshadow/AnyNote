@@ -1,5 +1,6 @@
 package com.example.anynote;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,6 @@ import androidx.annotation.Nullable;
 import com.example.anynote.common.StringUtil;
 import com.example.anynote.models.NoteModel;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 
@@ -22,7 +21,7 @@ public class NoteItemAdapter extends ArrayAdapter<NoteModel> {
     private int layoutId;
 
 
-    public NoteItemAdapter(@NonNull Context context, int resource, List<NoteModel> list) {
+    NoteItemAdapter(@NonNull Context context, int resource, List<NoteModel> list) {
         super(context, resource, list);
         this.layoutId = resource;
     }
@@ -31,26 +30,21 @@ public class NoteItemAdapter extends ArrayAdapter<NoteModel> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         NoteModel item = getItem(position);
-        View view = LayoutInflater.from(getContext()).inflate(layoutId, parent, false);
-        TextView key = view.findViewById(R.id.textView);
-        TextView context = view.findViewById(R.id.textView2);
-        TextView time = view.findViewById(R.id.textView3);
+        @SuppressLint("ViewHolder") View view = LayoutInflater.from(getContext()).inflate(layoutId, parent, false);
+        TextView title = view.findViewById(R.id.textView);
+        TextView author = view.findViewById(R.id.textView2);
+        TextView type = view.findViewById(R.id.textView3);
+        TextView year = view.findViewById(R.id.textView16);
 
-        key.setText(item.getKey());
-        SimpleDateFormat stf = new SimpleDateFormat("yyyy-MM-dd");
-        if (item.getTime() != null)
-            time.setText(stf.format(new Date(item.getTime())));
         try {
-            context.setText(StringUtil.SubReplays(item.getContext(), 8));
+            assert item != null;
+            title.setText(StringUtil.SubReplays(item.getTitle(), 6));
         } catch (Exception e) {
             e.printStackTrace();
         }
+        author.setText(item.getAuthor());
+        type.setText(item.getType());
+        year.setText(item.getYear());
         return view;
-
-    }
-
-    @Override
-    public boolean isEnabled(int position) {
-        return true;
     }
 }

@@ -11,8 +11,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn_collect, btn_add, btn_setting, btn_about, btn_exit;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private void init() {
 
-        btn_collect = findViewById(R.id.button);
-        btn_add = findViewById(R.id.button2);
-        btn_setting = findViewById(R.id.button3);
-        btn_about = findViewById(R.id.button4);
-        btn_exit = findViewById(R.id.button5);
+        Button btn_collect = findViewById(R.id.button);
+        Button btn_add = findViewById(R.id.button2);
+        Button btn_setting = findViewById(R.id.button3);
+        Button btn_about = findViewById(R.id.button4);
+        Button btn_exit = findViewById(R.id.button5);
+        Button btn_data = findViewById(R.id.button12);
 
 //按钮事件
         btn_collect.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent settingIntent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(settingIntent);
+            }
+        });
+        btn_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent dataIntent = new Intent(MainActivity.this, DataActivity.class);
+                startActivity(dataIntent);
             }
         });
 

@@ -7,30 +7,40 @@
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/labelText_keys"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:text="@string/labelText_title"
+        android:textColor="#2196F3"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/labelText_content"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:text="@string/labelText_author"
+        android:textColor="#2196F3"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/labelText_time"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:text="@string/labelText_type"
+        android:textColor="#2196F3"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/labelText_year"
+        android:textColor="#2196F3"
+        android:textSize="18sp" />
 </LinearLayout>

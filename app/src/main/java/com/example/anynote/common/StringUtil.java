@@ -3,6 +3,8 @@ package com.example.anynote.common;
 public class StringUtil {
 
     public static String SubReplays(String str, int length, String replay) throws Exception {
+        if (str == null)
+            throw new Exception("字符串错误");
         if (str.isEmpty())
             throw new Exception("字符串错误");
         if (length <= 0)

@@ -3,21 +3,15 @@ package com.example.anynote.models;
 
 import com.orm.SugarRecord;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
 public class NoteModel extends SugarRecord {
 
-    private String key;
+    private String title;
+    private String author;
+    private String year;
+    private String type;
+    private String content;
+    private Long time;
     private String remark;
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
 
     public String getRemark() {
         return remark;
@@ -25,16 +19,6 @@ public class NoteModel extends SugarRecord {
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    private String context;
-
-    public String getContext() {
-        return context;
-    }
-
-    public void setContext(String context) {
-        this.context = context;
     }
 
     public String getType() {
@@ -45,17 +29,37 @@ public class NoteModel extends SugarRecord {
         this.type = type;
     }
 
-    public boolean isSecret() {
-        return isSecret;
+    public String getTitle() {
+        return title;
     }
 
-    public void setSecret(boolean secret) {
-        isSecret = secret;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    private String type;
-    private Long time;
-    private boolean isSecret;
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public NoteModel() {
     }

@@ -52,31 +52,22 @@ public class NoteServiceImp implements INoteService {
         queryString.append("1=1 ");
         ArrayList<String> args = new ArrayList<>();
 
-        if (request.getContextSearch() != null) {
-            OrString.append("Context LIKE ? OR ");
-            args.add("%" + request.getContextSearch() + "%");
+        if (request.getTitleSearch() != null) {
+            OrString.append("title LIKE ? OR ");
+            args.add("%" + request.getTitleSearch() + "%");
         }
-        if (request.getContextSearch() != null) {
-            OrString.append("Key LIKE ? OR ");
-            args.add("%" + request.getKeySearch() + "%");
+        if (request.getAuthorSearch() != null) {
+            OrString.append("author LIKE ? OR ");
+            args.add("%" + request.getAuthorSearch() + "%");
         }
-        if (request.getTypeSearch() != null) {
-            OrString.append("Type LIKE ? OR ");
-            args.add("%" + request.getTypeSearch() + "%");
+        if (request.getYearSearch() != null) {
+            OrString.append("year LIKE ? OR ");
+            args.add("%" + request.getYearSearch() + "%");
         }
         if (OrString.length() > 0) {
             queryString.append("AND (");
             queryString.append(OrString.substring(0, OrString.length() - 3));
             queryString.append(") ");
-        }
-
-        if (request.getStartTime() != null) {
-            queryString.append("AND CreateTime >= ? ");
-            args.add(request.getStartTime().toString());
-        }
-        if (request.getEndTime() != null) {
-            queryString.append("AND CreateTime < ? ");
-            args.add(request.getEndTime().toString());
         }
 
         String orderby = "time DESC ";
@@ -100,31 +91,22 @@ public class NoteServiceImp implements INoteService {
         queryString.append("1=1 ");
         ArrayList<String> args = new ArrayList<>();
 
-        if (request.getContextSearch() != null) {
-            OrString.append("Context LIKE ? OR ");
-            args.add("%" + request.getContextSearch() + "%");
+        if (request.getTitleSearch() != null) {
+            OrString.append("title LIKE ? OR ");
+            args.add("%" + request.getTitleSearch() + "%");
         }
-        if (request.getContextSearch() != null) {
-            OrString.append("Key LIKE ? OR ");
-            args.add("%" + request.getKeySearch() + "%");
+        if (request.getAuthorSearch() != null) {
+            OrString.append("author LIKE ? OR ");
+            args.add("%" + request.getAuthorSearch() + "%");
         }
-        if (request.getTypeSearch() != null) {
-            OrString.append("Type LIKE ? OR ");
-            args.add("%" + request.getTypeSearch() + "%");
+        if (request.getYearSearch() != null) {
+            OrString.append("year LIKE ? OR ");
+            args.add("%" + request.getYearSearch() + "%");
         }
         if (OrString.length() > 0) {
-            queryString.append("(");
+            queryString.append("AND (");
             queryString.append(OrString.substring(0, OrString.length() - 3));
             queryString.append(") ");
-        }
-
-        if (request.getStartTime() != null) {
-            queryString.append("AND CreateTime >= ? ");
-            args.add(request.getStartTime().toString());
-        }
-        if (request.getEndTime() != null) {
-            queryString.append("AND CreateTime < ? ");
-            args.add(request.getEndTime().toString());
         }
 
         long count = NoteModel.count(NoteModel.class, queryString.toString(), args.toArray(new String[args.size()]));

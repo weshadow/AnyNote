@@ -32,7 +32,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="@string/search_string"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:importantForAutofill="no" />
 
                 <Button
                     android:id="@+id/button8"

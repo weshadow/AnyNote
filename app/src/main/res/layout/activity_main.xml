@@ -37,6 +37,13 @@
             android:text="@string/btnText_setting" />
 
         <Button
+            android:id="@+id/button12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/btnMargin"
+            android:text="@string/btnText_data" />
+
+        <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

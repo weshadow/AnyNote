@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NoteViewActivity"></activity>
+        <activity android:name=".DataActivity"></activity>
+        <activity android:name=".NoteViewActivity" />
         <activity android:name=".CollectNoteActivity" />
         <activity android:name=".AddNoteActivity" />
         <activity android:name=".SettingActivity" />
@@ -28,7 +29,7 @@
             android:value="anynote.db" /> <!-- 数据库问题有可能需要增加新版本解决 -->
         <meta-data
             android:name="VERSION"
-            android:value="2" />
+            android:value="3" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />

@@ -33,9 +33,11 @@ public class SettingsServiceImp implements ISettingsService {
         if (model.getValue().isEmpty())
             return false;
         SettingsModel data_model = GetByKey(model.getKey());
-        if (data_model == null)
+        if (data_model == null) {
+            long id = SettingsModel.save(model);
+            model.setId(id);
+            return id > 0;
+        } else
             return SettingsModel.save(model) > 0;
-        else
-            return SettingsModel.update(model) > 0;
     }
 }

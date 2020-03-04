@@ -3,6 +3,7 @@ package com.example.anynote;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AlertDialog;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,8 +20,7 @@ import com.example.anynote.services.serviceImp.NoteServiceImp;
 public class NoteViewActivity extends AppCompatActivity {
 
     private long noteId;
-    private Button editBtn, delBtn, cancelBtn;
-    private TextView keyText, typeText, contextText, remarkText;
+    private TextView titleText, authorText, yearText, typeText, contentText, remarkText;
     private INoteService service;
 
     @Override
@@ -30,25 +30,46 @@ public class NoteViewActivity extends AppCompatActivity {
         init();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        load();
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void load() {
+        NoteModel model = service.GetById(noteId);
+        titleText.setText(model.getTitle());
+        authorText.setText("作者：" + model.getAuthor());
+        yearText.setText("朝代：" + model.getYear());
+        typeText.setText("类型：" + model.getType());
+        contentText.setText(model.getContent());
+        remarkText.setText("备注：" + model.getRemark());
+    }
+
     private void init() {
         service = new NoteServiceImp();
-        editBtn = findViewById(R.id.button9);
-        delBtn = findViewById(R.id.button11);
-        cancelBtn = findViewById(R.id.button10);
+        Button editBtn = findViewById(R.id.button9);
+        Button delBtn = findViewById(R.id.button11);
+        Button cancelBtn = findViewById(R.id.button10);
 
-        keyText = findViewById(R.id.textView6);
+        titleText = findViewById(R.id.textView4);
+        authorText = findViewById(R.id.textView6);
+        yearText = findViewById(R.id.textView7);
         typeText = findViewById(R.id.textView11);
-        contextText = findViewById(R.id.textView12);
+        contentText = findViewById(R.id.textView12);
         remarkText = findViewById(R.id.textView13);
 
         noteId = getIntent().getLongExtra("noteId", 0);
-
-        NoteModel model = service.GetById(noteId);
-
-        keyText.setText(model.getKey());
-        typeText.setText(model.getType());
-        contextText.setText("正文：" + model.getContext());
-        remarkText.setText("备注：" + model.getRemark());
+        load();
+//        NoteModel model = service.GetById(noteId);
+//
+//        titleText.setText(model.getTitle());
+//        authorText.setText("作者：" + model.getAuthor());
+//        yearText.setText("朝代：" + model.getYear());
+//        typeText.setText("类型：" + model.getType());
+//        contentText.setText(model.getContent());
+//        remarkText.setText("备注：" + model.getRemark());
 
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +84,7 @@ public class NoteViewActivity extends AppCompatActivity {
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.exit(0);
+                finish();
             }
         });
 

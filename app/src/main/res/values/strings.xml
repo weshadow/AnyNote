@@ -1,15 +1,21 @@
 <resources>
     <string name="app_name">AnyNote</string>
     <!--label-->
-    <string name="labelText_keys">关键词</string>
-    <string name="labelText_type">分类</string>
+    <string name="labelText_title">标题</string>
+    <string name="labelText_year">朝代</string>
+    <string name="labelText_author">作者</string>
+    <string name="labelText_type">类型</string>
     <string name="labelText_remark">备注</string>
     <string name="labelText_content">正文</string>
     <string name="labelText_time">添加时间</string>
+    <string name="labelText_fontSize">字体大小</string>
+    <string name="labelText_theme">主题</string>
+    <string name="labelText_fontFamily">字体</string>
     <!--    button-->
-    <string name="btnText_collect">内容列表</string>
-    <string name="btnText_add">新增收录</string>
+    <string name="btnText_collect">诗集列表</string>
+    <string name="btnText_add">新增诗集</string>
     <string name="btnText_setting">软件设置</string>
+    <string name="btnText_data">数据维护</string>
     <string name="btnText_about">关于软件</string>
     <string name="btnText_exit">退出应用</string>
 
@@ -18,12 +24,17 @@
     <string name="btnText_cancel">取消</string>
     <string name="btnText_edit">编辑修改</string>
     <string name="btnText_search">搜索</string>
+    <string name="btnText_save">保存</string>
+    <string name="btnText_reback">返回</string>
+    <string name="btnText_importData">增量导入</string>
+    <string name="btnText_backupData">备份迁移</string>
     <!--    softVersion-->
     <string name="about_me_context">软件版本:V1.0.0\n作者:shadow\n版本时间:2020-02</string>
     <!--搜索-->
-    <string name="search_string">正文/关键字/分类检索</string>
-    <string name="search_context_text">搜索正文内容</string>
+    <string name="search_string">标题/作者/朝代搜索</string>
+
     <string name="search_key_text">关键字</string>
     <string name="search_type_text">分类</string>
     <string name="title_activity_note_view">NoteViewActivity</string>
+    <string name="aa">Aa</string>
 </resources>

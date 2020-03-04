@@ -1,45 +1,34 @@
 package com.example.anynote.dto;
 
-import java.time.LocalDateTime;
 
 public class NoteQueryParameter extends QueryParameterBase {
-    private String contextSearch;
-    private String typeSearch;
-    private String keySearch;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private String titleSearch;
+    private String authorSearch;
+    private String yearSearch;
     private String orderBy;
 
-    public String getContextSearch() {
-        return contextSearch;
+    public String getTitleSearch() {
+        return titleSearch;
     }
 
-    public void setContextSearch(String contextSearch) {
-        this.contextSearch = contextSearch;
+    public void setTitleSearch(String titleSearch) {
+        this.titleSearch = titleSearch;
     }
 
-    public String getTypeSearch() {
-        return typeSearch;
+    public String getAuthorSearch() {
+        return authorSearch;
     }
 
-    public void setTypeSearch(String typeSearch) {
-        this.typeSearch = typeSearch;
+    public void setAuthorSearch(String authorSearch) {
+        this.authorSearch = authorSearch;
     }
 
-    public LocalDateTime getStartTime() {
-        return startTime;
+    public String getYearSearch() {
+        return yearSearch;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
+    public void setYearSearch(String yearSearch) {
+        this.yearSearch = yearSearch;
     }
 
     public String getOrderBy() {
@@ -48,13 +37,5 @@ public class NoteQueryParameter extends QueryParameterBase {
 
     public void setOrderBy(String orderBy) {
         this.orderBy = orderBy;
-    }
-
-    public String getKeySearch() {
-        return keySearch;
-    }
-
-    public void setKeySearch(String keySearch) {
-        this.keySearch = keySearch;
     }
 }
