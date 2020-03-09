@@ -30,7 +30,7 @@
     <string name="btnText_importData">增量导入</string>
     <string name="btnText_backupData">备份迁移</string>
     <!--    softVersion-->
-    <string name="about_me_context">软件版本:V1.0.0\n作者:shadow\n版本时间:2020-02</string>
+    <string name="about_me_context">软件版本:V1.0.1\n作者:shadow\n版本时间:2020-03</string>
     <!--搜索-->
     <string name="search_string">标题/作者/朝代/正文搜索</string>
 
