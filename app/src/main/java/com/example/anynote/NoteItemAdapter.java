@@ -31,6 +31,7 @@ public class NoteItemAdapter extends ArrayAdapter<NoteModel> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         NoteModel item = getItem(position);
         @SuppressLint("ViewHolder") View view = LayoutInflater.from(getContext()).inflate(layoutId, parent, false);
+        TextView rank = view.findViewById(R.id.textView21);
         TextView title = view.findViewById(R.id.textView);
         TextView author = view.findViewById(R.id.textView2);
         TextView type = view.findViewById(R.id.textView3);
@@ -42,6 +43,8 @@ public class NoteItemAdapter extends ArrayAdapter<NoteModel> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        rank.setText(String.valueOf(position + 1));
         author.setText(item.getAuthor());
         type.setText(item.getType());
         year.setText(item.getYear());

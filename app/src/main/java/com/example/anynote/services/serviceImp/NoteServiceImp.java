@@ -52,17 +52,21 @@ public class NoteServiceImp implements INoteService {
         queryString.append("1=1 ");
         ArrayList<String> args = new ArrayList<>();
 
-        if (request.getTitleSearch() != null) {
+        if (request.getTitleSearch() != null && !request.getTitleSearch().isEmpty()) {
             OrString.append("title LIKE ? OR ");
             args.add("%" + request.getTitleSearch() + "%");
         }
-        if (request.getAuthorSearch() != null) {
+        if (request.getAuthorSearch() != null && !request.getAuthorSearch().isEmpty()) {
             OrString.append("author LIKE ? OR ");
             args.add("%" + request.getAuthorSearch() + "%");
         }
-        if (request.getYearSearch() != null) {
+        if (request.getYearSearch() != null && !request.getYearSearch().isEmpty()) {
             OrString.append("year LIKE ? OR ");
             args.add("%" + request.getYearSearch() + "%");
+        }
+        if (request.getContentSearch() != null && !request.getContentSearch().isEmpty()) {
+            OrString.append("content LIKE ? OR ");
+            args.add("%" + request.getContentSearch() + "%");
         }
         if (OrString.length() > 0) {
             queryString.append("AND (");
@@ -91,17 +95,21 @@ public class NoteServiceImp implements INoteService {
         queryString.append("1=1 ");
         ArrayList<String> args = new ArrayList<>();
 
-        if (request.getTitleSearch() != null) {
+        if (request.getTitleSearch() != null && !request.getTitleSearch().isEmpty()) {
             OrString.append("title LIKE ? OR ");
             args.add("%" + request.getTitleSearch() + "%");
         }
-        if (request.getAuthorSearch() != null) {
+        if (request.getAuthorSearch() != null && !request.getAuthorSearch().isEmpty()) {
             OrString.append("author LIKE ? OR ");
             args.add("%" + request.getAuthorSearch() + "%");
         }
-        if (request.getYearSearch() != null) {
+        if (request.getYearSearch() != null && !request.getYearSearch().isEmpty()) {
             OrString.append("year LIKE ? OR ");
             args.add("%" + request.getYearSearch() + "%");
+        }
+        if (request.getContentSearch() != null && !request.getContentSearch().isEmpty()) {
+            OrString.append("content LIKE ? OR ");
+            args.add("%" + request.getContentSearch() + "%");
         }
         if (OrString.length() > 0) {
             queryString.append("AND (");

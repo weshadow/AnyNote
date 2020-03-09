@@ -18,8 +18,6 @@ import com.example.anynote.models.NoteModel;
 import com.example.anynote.services.INoteService;
 import com.example.anynote.services.serviceImp.NoteServiceImp;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class CollectNoteActivity extends AppCompatActivity {
 
@@ -183,19 +181,18 @@ public class CollectNoteActivity extends AppCompatActivity {
         });
 
 
-
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 params.setPageIndex(1);
                 if (searchText.getText() != null) {
                     String search_text = searchText.getText().toString();
-                    if (!search_text.isEmpty()) {
-                        params.setTitleSearch(search_text);
-                        params.setAuthorSearch(search_text);
-                        params.setYearSearch(search_text);
 
-                    }
+                    params.setTitleSearch(search_text);
+                    params.setAuthorSearch(search_text);
+                    params.setYearSearch(search_text);
+                    params.setContentSearch(search_text);
+
                 }
                 params.setPageIndex(pageIndex);
                 params.setPageSize(pageSize);
@@ -209,10 +206,11 @@ public class CollectNoteActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 NoteModel model = (NoteModel) parent.getItemAtPosition(position);
+                if (model == null)
+                    return;
                 Intent noteDetail = new Intent(CollectNoteActivity.this, NoteViewActivity.class);
                 noteDetail.putExtra("noteId", model.getId());
                 startActivity(noteDetail);
-//                finish();
             }
         });
 

@@ -5,6 +5,7 @@ public class NoteQueryParameter extends QueryParameterBase {
     private String titleSearch;
     private String authorSearch;
     private String yearSearch;
+    private String contentSearch;
     private String orderBy;
 
     public String getTitleSearch() {
@@ -29,6 +30,14 @@ public class NoteQueryParameter extends QueryParameterBase {
 
     public void setYearSearch(String yearSearch) {
         this.yearSearch = yearSearch;
+    }
+
+    public String getContentSearch() {
+        return contentSearch;
+    }
+
+    public void setContentSearch(String contentSearch) {
+        this.contentSearch = contentSearch;
     }
 
     public String getOrderBy() {
